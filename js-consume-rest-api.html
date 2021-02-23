@@ -1,0 +1,29 @@
+	let restJsonFilter = '';
+	const userAction = async (currentYear,currentMonth) => {
+		let req = new XMLHttpRequest();
+		req.open('GET', '<%=request.getContextPath()%>/FrontOfficeServlet?cmd=getSocietyInfo', true);
+		req.send();
+		req.onload = function () {
+			restJsonFilter = JSON.parse(this.responseText);
+			console.table(restJsonFilter);
+		}
+		
+<%-- 		let responseFilter = await fetch('<%=request.getContextPath()%>/FrontOfficeServlet?cmd=getSocietyInfo'); --%>
+// 		restJsonFilter = await responseFilter.json();
+
+
+
+-------------------------------------------------
+const userAction = async () => {
+  const response = await fetch('http://example.com/movies.json', {
+    method: 'POST',
+    body: myBody, // string or object
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+
+  const myJson = await response.json(); //extract JSON from the http response
+  // do something with myJson
+  console.log(myJson);
+}
